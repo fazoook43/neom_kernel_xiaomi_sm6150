@@ -579,7 +579,8 @@ static int stutter;
 bool stutter_wait(const char *title)
 {
 	cond_resched_tasks_rcu_qs();
-	while (READ_ONCE(stutter_pause_test)) {
+	while (READ_ONCE(stutter_pause_test) ||
+	       (torture_runnable && !READ_ONCE(*torture_runnable))) {
 		if (stutter_pause_test)
 			if (READ_ONCE(stutter_pause_test) == 1)
 				schedule_timeout_interruptible(1);
