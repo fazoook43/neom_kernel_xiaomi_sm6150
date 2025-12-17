@@ -27,9 +27,6 @@ export CLANG_PATH="$PWD/clang"
 export GCC64_PATH="$PWD/gcc64"
 export GCC32_PATH="$PWD/gcc32"
 
-echo "📥 Clone kernelSU-Next"
-curl -LSs "https://raw.githubusercontent.com/Mr-Morat/KernelSU-Next/susfs/kernel/setup.sh" | bash -s susfs
-
 echo "🛠️ Build Kernel"
 export ARCH=arm64
 export PATH="$CLANG_PATH/bin:$GCC64_PATH/bin:$GCC32_PATH/bin:$PATH"
